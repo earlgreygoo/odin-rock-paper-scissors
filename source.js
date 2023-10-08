@@ -1,6 +1,10 @@
 let compChoice = '';
 let userChoice = '';
 
+let numOfRounds = 5;
+let userScore = 0;
+let computerScore = 0;
+
 
 
 function getCompChoice() {
@@ -33,29 +37,54 @@ function getUserChoice() {
 
 function playRound(playerSelection, computerSelection) {
   if (playerSelection === computerSelection) {
-  	alert("You chose " + playerSelection + ", and the computer chose " + computerSelection + ". You tied!");
+  	alert("You chose " + playerSelection + ", and the computer chose " + computerSelection + ". You tied this round.");
   } 
   else if (playerSelection == 'rock' && computerSelection == 'paper') {
-  	alert("You chose " + playerSelection + ", and the computer chose " + computerSelection + ". You Win!")
+  	alert("You chose " + playerSelection + ", and the computer chose " + computerSelection + ". You win this round")
+  	userScore += 1;
   }
   else if (playerSelection == 'rock' && computerSelection == 'scissors') {
-  	alert("You chose " + playerSelection + ", and the computer chose " + computerSelection + ". You Lose!")
+  	alert("You chose " + playerSelection + ", and the computer chose " + computerSelection + ". You lose this round")
+  	computerScore +=1;
   }
   else if (playerSelection == 'paper' && computerSelection == 'rock') {
-  	alert("You chose" + playerSelection + ", and the computer chose " + computerSelection + ". You Win!")
+  	alert("You chose" + playerSelection + ", and the computer chose " + computerSelection + ". You win this round")
+  	userScore += 1;
+
   }
   else if (playerSelection == 'paper' && computerSelection == 'scissors') {
-  	alert("You chose " + playerSelection + ", and the computer chose " + computerSelection + ". You Lose!")
+  	alert("You chose " + playerSelection + ", and the computer chose " + computerSelection + ". You lose this round")
+  	computerScore +=1;
   }
   else if (playerSelection == 'scissors' && computerSelection == 'rock') {
-  	alert("You chose " + playerSelection + ", and the computer chose " + computerSelection + ". You Lose!")
+  	alert("You chose " + playerSelection + ", and the computer chose " + computerSelection + ". You lose this round")
+  	computerScore +=1;
   }
   else if (playerSelection == 'scissors' && computerSelection == 'paper') {
-  	alert("You chose " + playerSelection + ", and the computer chose " + computerSelection + ". You Win!")
+  	alert("You chose " + playerSelection + ", and the computer chose " + computerSelection + ". You win this round")
+  	userScore += 1;
   }
   else {
   	alert('wuhoh, mustve made a whoopsie :(');
   }
+}
+
+
+
+function game() {
+	for (let i = 0; i < numOfRounds; i ++){
+		playRound(getUserChoice(),getCompChoice());
+		console.log("computer: " + computerScore +", player: " + userScore);
+	}
+	
+	if (userScore === computerScore) {
+		alert('Its a draw!')
+	}	else if (userScore > computerScore) {
+		alert ('YOU WIN!!!!');
+	}
+		else {
+			alert("YOU LOSE!!!!");
+		}
 }
 
 
@@ -65,4 +94,4 @@ function playRound(playerSelection, computerSelection) {
 //getCompChoice();
 //getUserChoice();
 
-playRound(getUserChoice(),getCompChoice());
+game();
