@@ -1,5 +1,5 @@
 let compChoice = '';
-let userChoice = prompt("rock, paper or scissor?", "???");;
+let userChoice = '';
 
 
 
@@ -15,18 +15,54 @@ function getCompChoice() {
 	    compChoice = "paper"
 	    break;
 	    case 2:
-	    compChoice = "scissor"
+	    compChoice = "scissors"
 	    break;
 	  default:
 	    compChoice = "rock"
 	}
 	console.log(compChoice);
+	return compChoice;
 
+}
+
+function getUserChoice() {
+	userChoice = prompt("rock, paper or scissors?", "???").toLowerCase();
+	return userChoice;
+}
+
+
+function playRound(playerSelection, computerSelection) {
+  if (playerSelection === computerSelection) {
+  	alert("You chose " + playerSelection + ", and the computer chose " + computerSelection + ". You tied!");
+  } 
+  else if (playerSelection == 'rock' && computerSelection == 'paper') {
+  	alert("You chose " + playerSelection + ", and the computer chose " + computerSelection + ". You Win!")
+  }
+  else if (playerSelection == 'rock' && computerSelection == 'scissors') {
+  	alert("You chose " + playerSelection + ", and the computer chose " + computerSelection + ". You Lose!")
+  }
+  else if (playerSelection == 'paper' && computerSelection == 'rock') {
+  	alert("You chose" + playerSelection + ", and the computer chose " + computerSelection + ". You Win!")
+  }
+  else if (playerSelection == 'paper' && computerSelection == 'scissors') {
+  	alert("You chose " + playerSelection + ", and the computer chose " + computerSelection + ". You Lose!")
+  }
+  else if (playerSelection == 'scissors' && computerSelection == 'rock') {
+  	alert("You chose " + playerSelection + ", and the computer chose " + computerSelection + ". You Lose!")
+  }
+  else if (playerSelection == 'scissors' && computerSelection == 'paper') {
+  	alert("You chose " + playerSelection + ", and the computer chose " + computerSelection + ". You Win!")
+  }
+  else {
+  	alert('wuhoh, mustve made a whoopsie :(');
+  }
 }
 
 
 
 
 
+//getCompChoice();
+//getUserChoice();
 
-getCompChoice();
+playRound(getUserChoice(),getCompChoice());
